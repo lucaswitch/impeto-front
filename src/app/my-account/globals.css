@@ -1,0 +1,32 @@
+section.main{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+section.main section.appbar{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    background-color: #ffffff;
+}
+
+section.main > section.content{
+    display: flex;
+    flex-direction: row;
+    padding-top: 5rem;
+    flex: 1;
+}
+@media (max-width:1025px) {
+    section.main > section.content > .menu{
+        display: none;
+    }
+}
+
+section.main > section.content > .menu{
+    flex: 1.2;
+}
+
+section.main > section.content > .inner{
+    flex: 3;
+}
