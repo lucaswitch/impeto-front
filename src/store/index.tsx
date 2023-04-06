@@ -1,3 +1,4 @@
+'use client'
 import 'regenerator-runtime/runtime'
 import { configureStore } from '@reduxjs/toolkit'
 import { combineReducers } from '@reduxjs/toolkit'

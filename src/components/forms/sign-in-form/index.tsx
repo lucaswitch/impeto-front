@@ -41,7 +41,7 @@ export function SignInForm() {
             </Link>
           </Grid>
           <Grid item>
-            <Link href="#" variant="body2">
+            <Link href="/sign-up" variant="body2">
               Não tem uma conta? Crie uma conta
             </Link>
           </Grid>

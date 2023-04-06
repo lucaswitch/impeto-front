@@ -1,6 +1,8 @@
-import TextField from '@mui/material/TextField'
-import { useRef, useEffect, useCallback } from 'react'
+import { TextField, InputAdornment } from '@mui/material'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import { useField } from '@unform/core'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
 
 type PasswordInputProps = {
   name: string
@@ -24,6 +26,7 @@ export function PasswordInput({
 }: PasswordInputProps) {
   const inputRef = useRef(null)
   const { fieldName, defaultValue, registerField, error } = useField(name)
+  const [visibility, setVisibility] = useState(false)
 
   /**
    * Quando ocorrer a mudança no valor do text input.
@@ -38,6 +41,13 @@ export function PasswordInput({
     },
     [inputRef],
   )
+
+  /**
+   * Modificador de visibilidade do campo.
+   */
+  const handleOnToggleVisibility = useCallback(() => {
+    setVisibility(!visibility)
+  }, [visibility])
 
   useEffect(() => {
     registerField({
@@ -62,14 +72,25 @@ export function PasswordInput({
   }
   return (
     <TextField
+      margin="normal"
+      type={visibility ? 'text' : 'password'}
       ref={inputRef}
       label={label}
-      margin="normal"
-      type="password"
       onChange={handleOnChange}
       helperText={helperText}
       error={hasError}
       fullWidth
+      InputProps={{
+        startAdornment: (
+          <InputAdornment
+            onClick={handleOnToggleVisibility}
+            position="start"
+            style={{ cursor: 'pointer' }}
+          >
+            {visibility ? <VisibilityIcon /> : <VisibilityOffIcon />}
+          </InputAdornment>
+        ),
+      }}
       {...others}
     />
   )

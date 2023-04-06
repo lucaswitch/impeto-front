@@ -55,7 +55,15 @@ export function TextInput({
     })
   }, [fieldName, registerField])
 
+  useEffect(() => {
+    if (inputRef.current) {
+      // @ts-ignore
+      inputRef.current.value = defaultValue
+    }
+  }, [inputRef, defaultValue])
+
   let hasError = false
+  console.log('error', error)
   if (typeof error === 'string' && error.length > 0) {
     hasError = true
     helperText = error

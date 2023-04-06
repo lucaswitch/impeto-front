@@ -1,5 +1,5 @@
 'use client'
-import { Box, Grid } from '@mui/material'
+import { Container, Box, Grid } from '@mui/material'
 
 /**
  * Layout de recuperação.
@@ -13,16 +13,17 @@ export default function RecoverAccountLayout({
 }) {
   return (
     <section className="main">
-      <Box
-        height="100vh"
-        display="flex"
-        justifyContent="center"
+      <Grid
+        container
+        spacing={0}
+        direction="column"
         alignItems="center"
+        style={{ minHeight: '100vh' }}
       >
         <Grid justifyContent="center" alignItems="center">
           <Grid item>{children}</Grid>
         </Grid>
-      </Box>
+      </Grid>
     </section>
   )
 }
